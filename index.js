@@ -40,20 +40,7 @@ class Lang {
         return translated.join(" ");
     }
     removeSpecials(list) {
-        let newlist = [];
-        let specials = ".,!?".split("");
-        for(const word of list) {
-            console.log("prevword: "+word)
-            if(specials.includes(word[word.length -1])) {
-                newlist.push(word.substr(0, word.length -2))
-                console.log("newword: " + word.substr(0, word.length - 2))
-            } else {
-                newlist.push(word)
-                console.log("newword: "+word)
-            }
-        }
-        newlist = newlist.filter(e => e !== "" || e !== "\n");
-        return newlist;
+    return list.map(s => s.replaceAll(/[.,!?]/, ""));
     }
 }
 

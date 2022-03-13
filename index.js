@@ -18,6 +18,7 @@ class Lang {
     translateToEN(sentences) {
         sentences = sentences.split(" "); //turn into words
         sentences = this.removeSpecials(sentences); //remove commas, etc
+        sentences = sentences.filter(e => e !== "" || e !== "\n");
         for(let word of sentences) {
             word = word.toLowerCase();
         }
@@ -30,6 +31,7 @@ class Lang {
     translateToOT(sentences) {
         sentences = sentences.split(" "); //turn into words
         sentences = this.removeSpecials(sentences); //remove commas, etc
+        sentences = sentences.filter(e => e !== "" || e !== "\n");
         for (let word of sentences) {
             word = word.toLowerCase();
         }
@@ -84,7 +86,6 @@ const global = {
 }
 
 window.onload = () => {
-    console.log("version 0");
     document.getElementById("inlang").value = "";
     console.log("load")
     global.readlangf("anai.langf")

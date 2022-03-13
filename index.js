@@ -41,7 +41,7 @@ class Lang {
     }
     removeSpecials(list) {
         let newlist = [];
-        let specials = ".,?!".split("");
+        let specials = ".,!?".split("");
         for(const word of list) {
             console.log("prevword: "+word)
             if(specials.includes(word[word.length -1])) {
@@ -52,12 +52,12 @@ class Lang {
                 console.log("newword: "+word)
             }
         }
-        newlist = newlist.filter(e => e !== "" || e !== "\n" || e !== "\t");
+        newlist = newlist.filter(e => e !== "" || e !== "\n");
         return newlist;
     }
 }
 
-anai = new Lang(["hello", "world", "of", "member"], ["eiwoj", "dzwrol", "ne", "zukat"]);
+anai = new Lang([], []);
 
 const global = {
     translateToENfromAnai: () => {
@@ -73,9 +73,31 @@ const global = {
 
         let translated = anai.translateToOT(source);
         output.innerText = translated;
+    },
+    readlangf: (urlname) => {
+        let xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', urlname, false);
+        xmlhttp.send();
+        let dict = xmlhttp.responseText;
+
+        const lines = dict.split("\n");
+
+        let en = [];
+        let ot = [];
+
+        for(const line of lines) {
+            en.push(line.split(";")[0]);
+            ot.push(line.split(";")[1]);
+        }
+
+        anai.EN = en;
+        anai.OT = ot;
     }
 }
 
-document.addEventListener('load', () => {
+window.onload = () => {
     document.getElementById("inlang").value = "";
-})
+    console.log("load")
+    global.readlangf("anai.langf")
+}

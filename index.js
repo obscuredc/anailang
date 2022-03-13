@@ -7,13 +7,13 @@ class Lang {
         if(this.EN[this.OT.indexOf(word)] == undefined) {
             return word;
         }
-        return this.EN[this.OT.indexOf(word)];
+        return this.EN[this.OT.indexOf(word)] + word[word.length-1] == "'" ? "s" : "";
     }
     wordToOT(word) {
         if (this.OT[this.EN.indexOf(word)] == undefined) {
             return word;
         }
-        return this.OT[this.EN.indexOf(word)];
+        return this.OT[this.EN.indexOf(word)] + word[word.length - 1] == "'" ? "s" : "";
     }
     translateToEN(sentences) {
         sentences = sentences.split(" "); //turn into words
@@ -93,4 +93,5 @@ window.onload = () => {
     document.getElementById("inlang").value = "";
     console.log("load")
     global.readlangf("anai.langf")
+    console.log("v0-unstable");
 }

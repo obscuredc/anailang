@@ -41,7 +41,7 @@ class Lang {
     }
     removeSpecials(list) {
         let newlist = [];
-        let specials = ".,!?".split("");
+        let specials = ".,?!".split("");
         for(const word of list) {
             console.log("prevword: "+word)
             if(specials.includes(word[word.length -1])) {
@@ -52,7 +52,7 @@ class Lang {
                 console.log("newword: "+word)
             }
         }
-        newlist = newlist.filter(e => e !== "" || e !== "\n");
+        newlist = newlist.filter(e => e !== "" || e !== "\n" || e !== "\t");
         return newlist;
     }
 }

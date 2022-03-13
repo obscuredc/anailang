@@ -40,7 +40,7 @@ class Lang {
         return translated.join(" ");
     }
     removeSpecials(list) {
-    return list.map(s => s.replaceAll(/[.,!?]/, ""));
+        return list.map(s => s.replaceAll(/[.,!?]/g, ""));
     }
 }
 
@@ -84,6 +84,7 @@ const global = {
 }
 
 window.onload = () => {
+    console.log("version 0");
     document.getElementById("inlang").value = "";
     console.log("load")
     global.readlangf("anai.langf")

@@ -57,7 +57,7 @@ class Lang {
     }
 }
 
-anai = new Lang(["hello", "world"], ["eiwoj", "dzwrol"]);
+anai = new Lang(["hello", "world", "of", "member"], ["eiwoj", "dzwrol", "ne", "zukat"]);
 
 const global = {
     translateToENfromAnai: () => {

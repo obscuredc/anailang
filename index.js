@@ -18,7 +18,9 @@ class Lang {
     translateToEN(sentences) {
         sentences = sentences.split(" "); //turn into words
         sentences = this.removeSpecials(sentences); //remove commas, etc
-        sentences = sentences.filter(e => e !== "" || e !== "\n");
+        sentences = sentences.filter(e => e !== "");
+        sentences = sentences.filter(e => e !== "\t");
+        sentences = sentences.filter(e => e !== "\n");
         for(let word of sentences) {
             word = word.toLowerCase();
         }
@@ -31,7 +33,9 @@ class Lang {
     translateToOT(sentences) {
         sentences = sentences.split(" "); //turn into words
         sentences = this.removeSpecials(sentences); //remove commas, etc
-        sentences = sentences.filter(e => e !== "" || e !== "\n");
+        sentences = sentences.filter(e => e !== "");
+        sentences = sentences.filter(e => e !== "\t");
+        sentences = sentences.filter(e => e !== "\n");
         for (let word of sentences) {
             word = word.toLowerCase();
         }
